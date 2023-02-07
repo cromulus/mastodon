@@ -7,8 +7,7 @@ on:
     branches:
       - main
 
-concurrency:
-  group: {{ github.head_ref ||  github.ref }}
+concurrency: ${{ github.head_ref ||  github.ref }}
 
 jobs:
   deploy:
