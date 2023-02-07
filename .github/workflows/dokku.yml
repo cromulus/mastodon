@@ -11,6 +11,7 @@ concurrency: ${{ github.head_ref ||  github.ref }}
 
 jobs:
   deploy:
+    concurrency: ${{ github.head_ref ||  github.ref }}
     runs-on: ubuntu-latest
     steps:
       - name: Cloning repo
