@@ -17,3 +17,4 @@ jobs:
           upstream_repo: https://github.com/mastodon/mastodon # change this
           upstream_branch: main # change this
           downstream_branch: main # change this
+          token: ${{ secrets.GITHUB_TOKEN }}
