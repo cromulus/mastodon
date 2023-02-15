@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-<<<<<<< HEAD
-ruby '3.0.4'
-=======
 ruby '>= 2.7.0', '< 3.3.0'
->>>>>>> fb8503e861b630728ead4be847309f1fd7c03dd4
 
 gem 'pkg-config', '~> 1.5'
 gem 'rexml', '~> 3.2'
