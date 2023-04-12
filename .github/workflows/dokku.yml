@@ -30,4 +30,3 @@ jobs:
           branch: 'main'
           git_remote_url: ${{ secrets.DOKKU_STREAM_REMOTE_URL }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-
