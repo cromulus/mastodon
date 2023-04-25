@@ -1224,9 +1224,6 @@ Rails/ActiveRecordCallbacksOrder:
 Rails/ApplicationController:
   Exclude:
     - 'app/controllers/health_controller.rb'
-    - 'app/controllers/well_known/host_meta_controller.rb'
-    - 'app/controllers/well_known/nodeinfo_controller.rb'
-    - 'app/controllers/well_known/webfinger_controller.rb'
 
 # Configuration parameters: Database, Include.
 # SupportedDatabases: mysql, postgresql
@@ -1402,14 +1399,6 @@ Rails/HasManyOrHasOneDependent:
     - 'app/models/status.rb'
     - 'app/models/user.rb'
     - 'app/models/web/push_subscription.rb'
-
-# Configuration parameters: Include.
-# Include: app/helpers/**/*.rb
-Rails/HelperInstanceVariable:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'app/helpers/instance_helper.rb'
-    - 'app/helpers/jsonld_helper.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: Include.
@@ -2270,12 +2259,6 @@ Style/MutableConstant:
 Style/NilLambda:
   Exclude:
     - 'config/initializers/paperclip.rb'
-
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: MinDigits, Strict, AllowedNumbers, AllowedPatterns.
-Style/NumericLiterals:
-  Exclude:
-    - 'config/initializers/strong_migrations.rb'
 
 # Configuration parameters: AllowedMethods.
 # AllowedMethods: respond_to_missing?
