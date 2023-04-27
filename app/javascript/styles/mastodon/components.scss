@@ -1154,7 +1154,8 @@ body > [data-popper-placement] {
     .media-gallery,
     .video,
     .audio,
-    .attachment-list {
+    .attachment-list,
+    .preview-card {
       margin-left: 46px + 10px;
       width: calc(100% - (46px + 10px));
     }
@@ -1170,7 +1171,7 @@ body > [data-popper-placement] {
     width: 0;
     position: absolute;
     top: 0;
-    inset-inline-start: 16px + ((46px - 2px) / 2);
+    inset-inline-start: 16px + ((46px - 2px) * 0.5);
 
     &--full {
       top: 0;
