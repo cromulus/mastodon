@@ -137,6 +137,10 @@ code {
     color: $secondary-text-color;
     margin-bottom: 30px;
 
+    &.invited-by {
+      margin-bottom: 15px;
+    }
+
     a {
       color: $highlight-text-color;
     }
@@ -1044,7 +1048,9 @@ code {
 }
 
 .simple_form .h-captcha {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .permissions-list {
