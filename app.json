@@ -98,6 +98,7 @@
     }
   ],
   "scripts": {
+    "predeploy": "yarn install",
     "postdeploy": "bundle exec rails db:migrate && bundle exec rails db:seed"
   },
   "addons": ["heroku-postgresql", "heroku-redis"]
