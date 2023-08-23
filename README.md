@@ -3,7 +3,7 @@
   <source media="(prefers-color-scheme: light)" srcset="./lib/assets/wordmark.light.png?raw=true">
   <img alt="Mastodon" src="./lib/assets/wordmark.light.png?raw=true" height="34">
 </picture></h1>
-
+foo
 [![GitHub release](https://img.shields.io/github/release/mastodon/mastodon.svg)][releases]
 [![Ruby Testing](https://github.com/mastodon/mastodon/actions/workflows/test-ruby.yml/badge.svg)](https://github.com/mastodon/mastodon/actions/workflows/test-ruby.yml)
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/mastodon/localized.svg)][crowdin]
