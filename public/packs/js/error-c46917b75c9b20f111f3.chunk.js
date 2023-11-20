@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[444],{1101:function(e,n,o){"use strict";o.r(n);o(126);var s=o(49);Object(s.a)((()=>{const e=document.querySelector("img");e.addEventListener("mouseenter",(()=>{e.src="/oops.gif"})),e.addEventListener("mouseleave",(()=>{e.src="/oops.png"}))}))}},[[1101,0]]]);
+//# sourceMappingURL=error-c46917b75c9b20f111f3.chunk.js.map

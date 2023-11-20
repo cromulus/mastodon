@@ -225,5 +225,6 @@
     "Capfile|Gemfile|*.{rb,ruby,ru,rake}": "bundle exec rubocop --force-exclusion -a",
     "*.{js,jsx,ts,tsx}": "eslint --fix",
     "*.{css,scss}": "stylelint --fix"
-  }
+  },
+  "version": "0.0.0"
 }
