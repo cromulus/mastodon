@@ -1,6 +1,6 @@
-web: bin/heroku-web
+web: PORT=5000 bin/heroku-web
 worker: bundle exec sidekiq
-ws: node ./streaming
+ws: PORT=4000 node ./streaming
 
 # For the streaming API, you need a separate app that shares Postgres and Redis:
 #

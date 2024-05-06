@@ -208,7 +208,7 @@ upstream {{ $.APP }}-ws {
 {{ range $listeners := $.DOKKU_APP_WS_LISTENERS | split " " }}
 {{ $listener_list := $listeners | split ":" }}
 {{ $listener_ip := index $listener_list 0 }}
-  server {{ $listener_ip }}:5000;{{ end }}
+  server {{ $listener_ip }}:4000;{{ end }}
 {{ end }}
 }
 
