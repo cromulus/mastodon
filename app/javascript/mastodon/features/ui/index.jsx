@@ -25,7 +25,7 @@ import { clearHeight } from '../../actions/height_cache';
 import { expandNotifications } from '../../actions/notifications';
 import { fetchServer, fetchServerTranslationLanguages } from '../../actions/server';
 import { expandHomeTimeline } from '../../actions/timelines';
-import initialState, { me, owner, singleUserMode, trendsEnabled, trendsAsLanding } from '../../initial_state';
+import initialState, { me, owner, singleUserMode, trendsEnabled, trendsAsLanding, disableHoverCards } from '../../initial_state';
 
 import BundleColumnError from './components/bundle_column_error';
 import Header from './components/header';
@@ -56,6 +56,7 @@ import {
   FavouritedStatuses,
   BookmarkedStatuses,
   FollowedTags,
+  LinkTimeline,
   ListTimeline,
   Blocks,
   DomainBlocks,
@@ -202,6 +203,7 @@ class SwitchingColumnsArea extends PureComponent {
             <WrappedRoute path='/public/remote' exact component={Firehose} componentParams={{ feedType: 'public:remote' }} content={children} />
             <WrappedRoute path={['/conversations', '/timelines/direct']} component={DirectTimeline} content={children} />
             <WrappedRoute path='/tags/:id' component={HashtagTimeline} content={children} />
+            <WrappedRoute path='/links/:url' component={LinkTimeline} content={children} />
             <WrappedRoute path='/lists/:id' component={ListTimeline} content={children} />
             <WrappedRoute path='/notifications' component={Notifications} content={children} exact />
             <WrappedRoute path='/notifications/requests' component={NotificationRequests} content={children} exact />
@@ -586,7 +588,7 @@ class UI extends PureComponent {
 
           {layout !== 'mobile' && <PictureInPicture />}
           <NotificationsContainer />
-          <HoverCardController />
+          {!disableHoverCards && <HoverCardController />}
           <LoadingBarContainer className='loading-bar' />
           <ModalContainer />
           <UploadArea active={draggingOver} onClose={this.closeUploadModal} />
