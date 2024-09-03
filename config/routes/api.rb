@@ -155,6 +155,12 @@ namespace :api, format: false do
 
     namespace :notifications do
       resources :requests, only: [:index, :show] do
+        collection do
+          post :accept, to: 'requests#accept_bulk'
+          post :dismiss, to: 'requests#dismiss_bulk'
+          get :merged, to: 'requests#merged?'
+        end
+
         member do
           post :accept
           post :dismiss
@@ -167,6 +173,7 @@ namespace :api, format: false do
     resources :notifications, only: [:index, :show] do
       collection do
         post :clear
+        get :unread_count
       end
 
       member do
@@ -330,17 +337,24 @@ namespace :api, format: false do
     namespace :admin do
       resources :accounts, only: [:index]
     end
+
+    namespace :notifications do
+      resource :policy, only: [:show, :update]
+    end
   end
 
   namespace :v2_alpha do
-    resources :notifications, only: [:index, :show] do
+    resources :notifications, param: :group_key, only: [:index, :show] do
       collection do
         post :clear
+        get :unread_count
       end
 
       member do
         post :dismiss
       end
+
+      resources :accounts, only: [:index], module: :notifications
     end
   end
 

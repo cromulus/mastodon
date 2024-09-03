@@ -68,7 +68,7 @@ class Account < ApplicationRecord
   INSTANCE_ACTOR_ID = -99
 
   USERNAME_RE   = /[a-z0-9_]+([a-z0-9_.-]+[a-z0-9_]+)?/i
-  MENTION_RE    = %r{(?<![=/[:word:]])@((#{USERNAME_RE})(?:@[[:word:].-]+[[:word:]]+)?)}i
+  MENTION_RE    = %r{(?<![=/[:word:]])@((#{USERNAME_RE})(?:@[[:word:].-]+[[:word:]]+)?)}
   URL_PREFIX_RE = %r{\Ahttp(s?)://[^/]+}
   USERNAME_ONLY_RE = /\A#{USERNAME_RE}\z/i
   USERNAME_LENGTH_LIMIT = 30
@@ -89,6 +89,7 @@ class Account < ApplicationRecord
   include DomainMaterializable
   include DomainNormalizable
   include Paginable
+  include Reviewable
 
   enum :protocol, { ostatus: 0, activitypub: 1 }
   enum :suspension_origin, { local: 0, remote: 1 }, prefix: true
@@ -144,6 +145,8 @@ class Account < ApplicationRecord
   scope :dormant, -> { joins(:account_stat).merge(AccountStat.without_recent_activity) }
   scope :with_username, ->(value) { where arel_table[:username].lower.eq(value.to_s.downcase) }
   scope :with_domain, ->(value) { where arel_table[:domain].lower.eq(value&.to_s&.downcase) }
+  scope :without_memorial, -> { where(memorial: false) }
+  scope :duplicate_uris, -> { select(:uri, Arel.star.count).group(:uri).having(Arel.star.count.gt(1)) }
 
   after_update_commit :trigger_update_webhooks
 
@@ -422,22 +425,6 @@ class Account < ApplicationRecord
     return 'local' if local?
 
     @synchronization_uri_prefix ||= "#{uri[URL_PREFIX_RE]}/"
-  end
-
-  def requires_review?
-    reviewed_at.nil?
-  end
-
-  def reviewed?
-    reviewed_at.present?
-  end
-
-  def requested_review?
-    requested_review_at.present?
-  end
-
-  def requires_review_notification?
-    requires_review? && !requested_review?
   end
 
   class << self
